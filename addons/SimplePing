@@ -59,10 +59,5 @@ const data = await getRandomFox();
         development: false
     },
     api: {
-        test: "LOLOLOLOLOLOLOL",
-        DIngDOng: function () {
-            return console.log("POPOO")
-        },
-        ...require("./SimpleLoad").DeveloperUtils["Zorino"]
     }
 };
