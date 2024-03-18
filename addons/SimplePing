@@ -7,7 +7,7 @@ const CommandHandler = require("../src/modules/handlers/CommandHandler");
 
 const VERSION = "2.0";
 
-const logger = require("awesome-logging")
+const getRandomFox = require('random-fox-img');
 
 module.exports = {
     run: async () => {
