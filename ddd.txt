@@ -22,7 +22,7 @@
             "Name": "Simple Uptime",
             "Prefix": "\u001b[32m\u001b[1mSimple Uptime\u001b[22m\u001b[39m",
             "Developer": "59L#3852",
-            "URL": "https://paste.corebot.dev/raw/ayenilujot"
+            "URL": "https://raw.githubusercontent.com/59L/corebotpublic/main/addons/SimplePing"
         }
     },
     "172131900289187849": {
