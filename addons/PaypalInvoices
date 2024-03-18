@@ -1,0 +1,160 @@
+const Utils = require('./src/modules/utils');
+const chalk = require("chalk");
+const prefix = chalk.hex("#7289da").bold("[DISCORD STATUS] ");
+const version = "2.0.1";
+
+module.exports = {
+    run: async (bot) => {
+        const config = module.exports.configs.config;
+        function updateStats() {
+            if (config.LogWhenUpdating) console.log(Utils.infoPrefix + chalk.hex("#7289da").bold("[DISCORD STATUS]") + " Updating statistics");
+
+            bot.guilds.cache.filter(g => !Utils.variables.config.Other.IgnoredGuilds.includes(g.id)).forEach(guild => {
+                let stats = (Array.isArray(config.CustomStats) && config.CustomStats.length) ? config.CustomStats : [];
+
+                config.Bots.Type = "bots";
+                config.Humans.Type = "humans";
+                config.TotalMembers.Type = "totalmembers";
+                config.Channels.Type = "channels";
+
+                stats.push(config.Bots, config.Humans, config.TotalMembers, config.Channels);
+
+                async function getStatistic(stat) {
+                    let type = stat.Type.toLowerCase();
+
+                    if (type == "bots") return (await guild.members.fetch()).filter(m => m.user.bot).size;
+                    if (type == "humans") return (await guild.members.fetch()).filter(m => !m.user.bot).size;
+                    if (type == "totalmembers") return (await guild.members.fetch()).size;
+                    if (type == "channels") return guild.channels.cache.size;
+                    if (type == "roles") return (await guild.roles.fetch()).size;
+                    if (type == "role") {
+                        let role = (await guild.roles.fetch()).find(r => r.name.toLowerCase() == stat.Role.toLowerCase() || r.id == stat.Role.toString());
+                        return role ? role.members.size : 0;
+                    }
+                }
+
+                Utils.asyncForEach(stats, async stat => {
+                    if (stat.Enabled !== false) {
+                        if (!["voice", "category", "GUILD_VOICE", "GUILD_CATEGORY"].includes(stat.Channel.Type)) return;
+                        if (stat.Channel.Type == "voice") stat.Channel.Type = "GUILD_VOICE";
+                        if (stat.Channel.Type == "category") stat.Channel.Type = "GUILD_CATEGORY";
+
+                        let statistic = await getStatistic(stat);
+                        let parent = stat.Channel.Category ? Utils.findChannel(stat.Channel.Category, guild, 'GUILD_CATEGORY', false) : undefined;
+                        let channel = guild.channels.cache.find(channel => (channel.id == stat.Channel.ID || (new RegExp(stat.Channel.Name.toLowerCase().replace(/{stat}/g, "\\d+"))).test(channel.name.toLowerCase())) && (channel.parent ? channel.parent.name == stat.Channel.Category || channel.parent.id == stat.Channel.Category : true) && channel.type == stat.Channel.Type);
+
+                        if (!parent && stat.Channel.Category) {
+                            parent = await guild.channels.create(stat.Channel.Category, {
+                                type: 'GUILD_CATEGORY'
+                            });
+                        }
+
+                        let name = stat.Channel.Name.replace(/{stat}/g, config.FormatStats ? statistic.toLocaleString() : statistic);
+
+                        if (!channel || channel.name !== name) Utils.variables.channelLogBlacklist.add(name);
+
+                        if (channel) {
+                            if (channel.name !== name) {
+                                Utils.variables.channelLogBlacklist.delete(channel.name);
+                                channel.setName(name);
+                            }
+                        } else guild.channels.create(name, {
+                            type: stat.Channel.Type,
+                            parent,
+                            permissionOverwrites: [
+                                {
+                                    id: guild.id,
+                                    deny: "CONNECT"
+                                }
+                            ]
+                        });
+                    }
+                });
+            });
+        }
+
+        updateStats();
+        setInterval(updateStats, parseInt(config.UpdateInterval) ? 60000 * parseInt(config.UpdateInterval) : 60000 * 5);
+    },
+    configs: {
+        config: {
+            "~c1": "########################################",
+            "~c2": "#                                      #",
+            "~c3": "#         DISCORD STATUS ADDON         #",
+            "~c4": "#                                      #",
+            "~c5": "########################################",
+            "~c6": "# Note: Channel Type setting must be \"voice\" or \"category\". Channel Category setting will be ignored if Type is \"category\"",
+            "~c21": "# You can also add an ID setting to the Channel settings if you wish to find a channel by ID",
+            "~l1": "",
+            Bots: {
+                Enabled: true,
+                Channel: {
+                    Type: "voice",
+                    Category: "Server Stats",
+                    Name: "Bots: {stat}"
+                }
+            },
+            Humans: {
+                Enabled: true,
+                Channel: {
+                    Type: "voice",
+                    Category: "Server Stats",
+                    Name: "Humans: {stat}"
+                }
+            },
+            TotalMembers: {
+                Enabled: true,
+                Channel: {
+                    Type: "voice",
+                    Category: "Server Stats",
+                    Name: "Total Members: {stat}"
+                }
+            },
+            Channels: {
+                Enabled: true,
+                Channel: {
+                    Type: "voice",
+                    Category: "Server Stats",
+                    Name: "Channels: {stat}",
+                    "~c1": `#ID: "PUT-ID-HERE" # optional setting if you want to find channel with ID`
+                }
+            },
+            "~l2": "",
+            "~c7": "########################################",
+            "~c8": "#                                      #",
+            "~c9": "#            CUSTOM STATS              #",
+            "~c10": "#                                      #",
+            "~c11": "########################################",
+            "~c12": "# Note: The only Type for custom stats is currently \"role\". It's a setting made incase we add more types in the future.",
+            "~l3": "",
+            CustomStats: [
+                {
+                    Type: "role",
+                    Role: "VIP",
+                    Channel: {
+                        Type: "voice",
+                        Category: "Server Stats",
+                        Name: "VIPs: {stat}"
+                    }
+                }
+            ],
+            "~l4": "",
+            "~c13": "########################################",
+            "~c14": "#                                      #",
+            "~c15": "#                OTHER                 #",
+            "~c16": "#                                      #",
+            "~c17": "########################################",
+            "~l5": "",
+            UpdateInterval: 3,
+            "~c18": "# The interval in minutes at which stats will be updated. You may not see changes every X minutes due to Discord's rate limits though.",
+            FormatStats: true,
+            "~c19": "# Should the number be formatted with commas (123,456,789 vs 123456789). Mainly for large Discord servers",
+            LogWhenUpdating: false,
+            "~c20": "# Should the bot log a message to console when the stats are being updated"
+        }
+    },
+    messages: {
+        loaded: `${Utils.infoPrefix + prefix}Loaded addon. ${chalk.gray(`(v${version})`)}`,
+        unloaded: `${Utils.infoPrefix + prefix}Unloaded addon.`
+    }
+};
