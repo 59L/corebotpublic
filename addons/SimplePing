@@ -1,0 +1,66 @@
+const Utils = require("../src/modules/utils");
+const { Embed } = Utils;
+
+// Dependencies
+const chalk = require("chalk");
+const CommandHandler = require("../src/modules/handlers/CommandHandler");
+
+const VERSION = "2.0";
+
+const logger = require("awesome-logging")
+
+module.exports = {
+    run: async () => {
+        const api = module.exports.api
+        const { prefix, errorPrefix } = api
+
+        const config = module.exports.configs["config"]
+
+        CommandHandler.set({
+            name: "up",
+            run: async (bot, message, args) => {
+                let totalSeconds = (bot.uptime / 1000);
+                let days = Math.floor(totalSeconds / 86400);
+                totalSeconds %= 86400;
+                let hours = Math.floor(totalSeconds / 3600);
+                totalSeconds %= 3600;
+                let minutes = Math.floor(totalSeconds / 60);
+                let seconds = Math.floor(totalSeconds % 60);
+                let time = `${days > 0 ? days + config.Time.Days : ''}${hours > 0 ? hours + config.Time.Hours : ''}${minutes > 0 ? minutes + config.Time.Minutes : ''}${seconds > 0 ? seconds + config.Time.Seconds : ''}`
+
+                console.log("Bot uptime:" + time)
+                message.channel.send("Bla bla time up for bla " + time)
+            },
+            description: "spongeeee boy",
+            usage: 'uptime',
+            aliases: ["onlinetime"],
+            type: 'general'
+        })
+    },
+    messages: {
+        loaded: Utils.infoPrefix + chalk.yellow(chalk.bold(`[UPTIME] `)) + "Loaded addon. " + chalk.gray(`(v${VERSION})`),
+        unloaded: Utils.infoPrefix + chalk.yellow(chalk.bold(`[UPTIME] `)) + "Unloaded addon. " + chalk.gray(`(v${VERSION})`)
+    },
+    dependencies: ["awesome-logging"],
+    configs: {
+        config: {
+            Username: "NigBob",
+            Time: {
+                Days: " days",
+                Hours: " hours",
+                Minutes: " minutes",
+                Seconds: " seconds"
+            }
+        },
+    },
+    settings: {
+        development: false
+    },
+    api: {
+        test: "LOLOLOLOLOLOLOL",
+        DIngDOng: function () {
+            return console.log("POPOO")
+        },
+        ...require("./SimpleLoad").DeveloperUtils["Zorino"]
+    }
+};
