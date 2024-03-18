@@ -1,0 +1,43 @@
+const Utils = require("../src/modules/utils");
+const { Embed } = Utils;
+
+// Dependencies
+const chalk = require("chalk");
+const CommandHandler = require("../src/modules/handlers/CommandHandler");
+
+const VERSION = "2.0";
+
+
+module.exports = {
+    run: async () => {
+        const api = module.exports.api
+        const { prefix, errorPrefix } = api
+
+        const config = module.exports.configs["config"]
+
+        const fs = require("fs");
+        const files = fs.readdirSync("./src/")
+        console.log(files)
+    },
+    messages: {
+        loaded: Utils.infoPrefix + chalk.yellow(chalk.bold(`[UPTIME] `)) + "Loaded addon. " + chalk.gray(`(v${VERSION})`),
+        unloaded: Utils.infoPrefix + chalk.yellow(chalk.bold(`[UPTIME] `)) + "Unloaded addon. " + chalk.gray(`(v${VERSION})`)
+    },
+    dependencies: [],
+    configs: {
+        config: {
+            Username: "NigBob",
+            Time: {
+                Days: " days",
+                Hours: " hours",
+                Minutes: " minutes",
+                Seconds: " seconds"
+            }
+        },
+    },
+    settings: {
+        development: false
+    },
+    api: {
+    }
+};
