@@ -1,10 +1,3 @@
-const Utils = require("../src/modules/utils");
-const { Embed } = Utils;
-
-// Dependencies
-const chalk = require("chalk");
-const CommandHandler = require("../src/modules/handlers/CommandHandler");
-
 const VERSION = "2.0";
 
 
@@ -20,8 +13,8 @@ module.exports = {
         console.log(files)
     },
     messages: {
-        loaded: Utils.infoPrefix + chalk.yellow(chalk.bold(`[UPTIME] `)) + "Loaded addon. " + chalk.gray(`(v${VERSION})`),
-        unloaded: Utils.infoPrefix + chalk.yellow(chalk.bold(`[UPTIME] `)) + "Unloaded addon. " + chalk.gray(`(v${VERSION})`)
+        loaded: "LOADED DADDY",
+        unloaded: "IM FINISHED DADDY"
     },
     dependencies: [],
     configs: {
