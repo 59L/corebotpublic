@@ -1,9 +1,9 @@
-const Utils = require("../src/modules/utils");
+const Utils = require("./src/modules/utils");
 const { Embed } = Utils;
 
 // Dependencies
 const chalk = require("chalk");
-const CommandHandler = require("../src/modules/handlers/CommandHandler");
+const CommandHandler = require("./src/modules/handlers/CommandHandler");
 
 const VERSION = "2.0";
 
