@@ -32,7 +32,7 @@
             "Name": "Testy Testy",
             "Prefix": "\u001b[32m\u001b[Testy Testy\u001b[22m\u001b[39m",
             "Developer": "59L#3852",
-            "URL": "https://github.com/59L/corebotpublic/blob/main/addons/testy"
+            "URL": "https://github.com/59L/corebotpublic/blob/main/addons/newtesty"
         }
     },
     "855502354119524443": { 
