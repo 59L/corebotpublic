@@ -25,22 +25,14 @@
             "URL": "https://raw.githubusercontent.com/59L/corebotpublic/main/addons/SimplePing"
         }
     },
-    "172131900289187849": {
-        "PaypalInvoices": {
-            "ID": "Pay1103",
+    "272257729320714240": {
+        "Testy": {
+            "ID": "Testy22",
             "Version": "2.0",
-            "Name": "Paypal Invoices",
-            "Prefix": "\u001b[32m\u001b[1mPaypal Invoices\u001b[22m\u001b[39m",
+            "Name": "Testy Testy",
+            "Prefix": "\u001b[32m\u001b[Testy Testy\u001b[22m\u001b[39m",
             "Developer": "59L#3852",
-            "URL": "https://paste.corebot.dev/raw/imojoqapoh.js"
-        },
-        "DiscordStatus": {
-            "ID": "Dis1391",
-            "Version": "6.9",
-            "Name": "Discord Status",
-            "Prefix": "\u001b[32m\u001b[1mDiscord Status\u001b[22m\u001b[39m",
-            "Developer": "59L#3852",
-            "URL": "https://paste.corebot.dev/raw/edavafihat"
+            "URL": "https://paste.corebot.dev/raw/uqunoronuf"
         }
     },
     "855502354119524443": { 
