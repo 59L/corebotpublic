@@ -15,7 +15,7 @@ module.exports = {
         const config = module.exports.configs["config"]
 
         CommandHandler.set({
-            name: "up",
+            name: "down",
             run: async (bot, message, args) => {
                 message.channel.send("Gay")
             },
@@ -26,8 +26,8 @@ module.exports = {
         })
     },
     messages: {
-        loaded: Utils.infoPrefix + chalk.yellow(chalk.bold(`[UPTIME] `)) + "Loaded addon. " + chalk.gray(`(v${VERSION})`),
-        unloaded: Utils.infoPrefix + chalk.yellow(chalk.bold(`[UPTIME] `)) + "Unloaded addon. " + chalk.gray(`(v${VERSION})`)
+        loaded: Utils.infoPrefix + chalk.yellow(chalk.bold(`[Testy] `)) + "Loaded addon. " + chalk.gray(`(v${VERSION})`),
+        unloaded: Utils.infoPrefix + chalk.yellow(chalk.bold(`[Testy] `)) + "Unloaded addon. " + chalk.gray(`(v${VERSION})`)
     },
     dependencies: ["awesome-logging"],
     configs: {
