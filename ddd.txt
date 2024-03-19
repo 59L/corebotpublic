@@ -1,14 +1,4 @@
 {
-    "691035129547587624": {
-        "PaypalInvoices": {
-            "ID": "Pay1103",
-            "Version": "2.0",
-            "Name": "Paypal Invoices",
-            "Prefix": "\u001b[32m\u001b[1mPaypal Invoices\u001b[22m\u001b[39m",
-            "Developer": "59L#3852",
-            "URL": "https://paste.corebot.dev/raw/imojoqapoh.js"
-        }
-    },
     "272257729320714240-T": {
         "PaypalInvoices": {
             "ID": "Pay1103",
@@ -35,15 +25,7 @@
             "URL": "https://raw.githubusercontent.com/59L/corebotpublic/main/addons/SimplePing"
         }
     },
-    "736274816234946621": {
-        "Testy": {
-            "ID": "Testy22",
-            "Version": "2.0",
-            "Name": "Testy Testy",
-            "Prefix": "\u001b[32m\u001b[Testy Testy\u001b[22m\u001b[39m",
-            "Developer": "59L#3852",
-            "URL": "https://raw.githubusercontent.com/59L/corebotpublic/main/addons/newtesty"
-        },
+    "691035129547587624": {
         "SimpleUptime": {
             "ID": "UPTIME122",
             "Version": "1.0",
