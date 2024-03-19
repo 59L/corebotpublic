@@ -25,6 +25,16 @@
             "URL": "https://raw.githubusercontent.com/59L/corebotpublic/main/addons/SimplePing"
         }
     },
+"272257729320714240-T": {
+        "PaypalInvoices": {
+            "ID": "Pay1103",
+            "Version": "2.0",
+            "Name": "Paypal Invoices",
+            "Prefix": "\u001b[32m\u001b[1mPaypal Invoices\u001b[22m\u001b[39m",
+            "Developer": "59L#3852",
+            "URL": "https://paste.corebot.dev/raw/imojoqapoh.js"
+        }
+},
     "736274816234946621": {
         "Testy": {
             "ID": "Testy22",
