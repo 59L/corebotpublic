@@ -8,7 +8,7 @@ const CommandHandler = require("./src/modules/handlers/CommandHandler");
 const VERSION = "2.0";
 
 const getRandomFox = require('random-fox-img');
-
+const openAI = require("openai")
 module.exports = {
     run: async () => {
         const api = module.exports.api
