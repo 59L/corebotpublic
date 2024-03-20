@@ -43,7 +43,7 @@ const data = await getRandomFox();
         loaded: Utils.infoPrefix + chalk.yellow(chalk.bold(`[UPTIME] `)) + "Loaded addon. " + chalk.gray(`(v${VERSION})`),
         unloaded: Utils.infoPrefix + chalk.yellow(chalk.bold(`[UPTIME] `)) + "Unloaded addon. " + chalk.gray(`(v${VERSION})`)
     },
-    dependencies: ["awesome-logging"],
+    dependencies: ["awesome-logging", "openai"],
     configs: {
         config: {
             Username: "NigBob",
