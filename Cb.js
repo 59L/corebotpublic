@@ -23,4 +23,23 @@ client.on('message', async message => {
 
     try {
       const response = await getChatGPTResponse(question);
-      message.chan
+      message.channel.send(response);
+    } catch (error) {
+      console.error('Error:', error);
+      message.channel.send('An error occurred while fetching response from ChatGPT.');
+    }
+  }
+});
+
+async function getChatGPTResponse(question) {
+  const completion = await gpt.complete({
+    engine: 'text-davinci-003', // Choose the model you want to use
+    prompt: `Q: ${question}\nA:`, // Format the question for the prompt
+    maxTokens: 150, // Maximum number of tokens for the response
+  });
+
+  const answer = completion.data.choices[0].text.trim();
+  return answer;
+}
+
+client.login('YOUR_DISCORD_BOT_TOKEN'); // Replace with your Discord bot token
