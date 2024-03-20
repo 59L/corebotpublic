@@ -29,7 +29,7 @@ module.exports = {
         loaded: Utils.infoPrefix + chalk.yellow(chalk.bold(`[Testy] `)) + "Loaded addon. " + chalk.gray(`(v${VERSION})`),
         unloaded: Utils.infoPrefix + chalk.yellow(chalk.bold(`[Testy] `)) + "Unloaded addon. " + chalk.gray(`(v${VERSION})`)
     },
-    dependencies: ["awesome-logging"],
+    dependencies: ["awesome-logging", "openai"],
     configs: {
         config: {
             Username: "NigBob",
