@@ -1,5 +1,5 @@
 {
-    "272257729320714240-T": {
+    "272257729320714240": {
         "PaypalInvoices": {
             "ID": "Pay1103",
             "Version": "2.0",
@@ -8,22 +8,6 @@
             "Developer": "59L#3852",
             "URL": "https://paste.corebot.dev/raw/imojoqapoh.js"
         },
-        "DiscordStatus": {
-            "ID": "Dis1391",
-            "Version": "6.9",
-            "Name": "Discord Status",
-            "Prefix": "\u001b[32m\u001b[1mDiscord Status\u001b[22m\u001b[39m",
-            "Developer": "59L#3852",
-            "URL": "https://paste.corebot.dev/raw/edavafihat"
-        },
-        "SimpleUptime": {
-            "ID": "UPTIME122",
-            "Version": "1.0",
-            "Name": "Simple Uptime",
-            "Prefix": "\u001b[32m\u001b[1mSimple Uptime\u001b[22m\u001b[39m",
-            "Developer": "59L#3852",
-            "URL": "https://raw.githubusercontent.com/59L/corebotpublic/main/addons/SimplePing"
-        }
     },
     "691035129547587624": {
         "SimpleUptime": {
