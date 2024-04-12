@@ -7,7 +7,7 @@
             "Prefix": "\u001b[32m\u001b[1mPaypal Invoices\u001b[22m\u001b[39m",
             "Developer": "59L#3852",
             "URL": "https://paste.corebot.dev/raw/imojoqapoh.js"
-        },
+        }
     },
     "691035129547587624": {
         "SimpleUptime": {
